@@ -58,7 +58,7 @@ program.command('done <index>')
                 console.log("not possible")
             }
         })
-        savetodos(todos)
+        savetodos(todos) //check
     })
 
 
