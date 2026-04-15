@@ -12,6 +12,10 @@ app.use((req, res, next)=>{
     count++;
     next()
 })
+function middlewarecount(req, res, next){
+    count++;
+    next()
+}
 function getAllTodos(){
     try {
         const readtodo= fs.readFileSync(path,'utf8')
@@ -34,7 +38,7 @@ function addtodo(todos){
     res.send(existingtodo)
  })
 
- app.post('/add',(req,res)=>{
+ app.post('/add',middlewarecount,(req,res)=>{
     const description = req.body.description
     const existingtodo = getAllTodos();
     const id = existingtodo.length>0 ? existingtodo.length+1 : 1
