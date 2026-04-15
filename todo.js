@@ -3,12 +3,15 @@
  const app=express()
  const port =5000;
 const fs= require('fs');
-
+let count=0
 const path= './apiTodo.json'
 
 app.use(express.json())
 app.use(cors())
-
+app.use((req, res, next)=>{
+    count++;
+    next()
+})
 function getAllTodos(){
     try {
         const readtodo= fs.readFileSync(path,'utf8')
